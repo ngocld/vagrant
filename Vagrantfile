@@ -12,16 +12,8 @@ Vagrant.configure("2") do |config|
 
     vm.vm.provision "shell", inline: <<-SHELL
       yum update -y
-      sudo yum install -y gcc g++ make automake autoconf curl-devel openssl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel
-      cd /tmp
-      curl -L --remote-name https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.2.tar.gz
-      tar -xzvf ruby-3.0.2.tar.gz
-      cd ruby-3.0.2
-      ./configure
-      make
-      make install
-      ruby --version
-
+      yum install -y git
+      git clone https://github.com/ngocld/kube-a.git
     SHELL
   end
 end
