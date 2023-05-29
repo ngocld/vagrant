@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     vm.vm.provision "shell", inline: <<-SHELL
       yum update -y
       yum install httpd -y
-      yum install mariadb-server
+      yum install mariadb-server -y
       systemctl start mariadb
       systemctl enable mariadb
       # mysql_secure_installation
