@@ -12,11 +12,11 @@ Vagrant.configure("2") do |config|
 
     vm.vm.provision "shell", inline: <<-SHELL
       yum update -y
-      yum install httpd -y
-      yum install mariadb-server -y
-      systemctl start mariadb
-      systemctl enable mariadb
-      # mysql_secure_installation
+      yum install epel-release -y
+      yum install nodejs -y
+      yum install npm -y
+      yum install npm
+      node hello.js
     SHELL
   end
 end
