@@ -12,11 +12,16 @@ Vagrant.configure("2") do |config|
 
     vm.vm.provision "shell", inline: <<-SHELL
       yum update -y
-      yum install epel-release -y
-      yum install nodejs -y
-      yum install npm -y
-      yum install npm
-      node hello.js
+      sudo yum install -y gcc g++ make automake autoconf curl-devel openssl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel
+      cd /tmp
+      curl -L --remote-name https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.2.tar.gz
+      tar -xzvf ruby-3.0.2.tar.gz
+      cd ruby-3.0.2
+      ./configure
+      make
+      make install
+      ruby --version
+
     SHELL
   end
 end
